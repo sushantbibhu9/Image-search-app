@@ -10,9 +10,9 @@ let page = 1;
 
 async function searchImages() {
     inputData = inputE1.value;
-    const url = `https://api.unsplash.com/search/photos?page=${page}&query=${inputData}&client_id=${accessKey}`;
+    const ur1 = `https://api.unsplash.com/search/photos?page=${page}&query=${inputData}&client_id=${accessKey}`;
 
-    const response = await fetch(url);
+    const response = await fetch(ur1);
     const data = await response.json();
 
     const results = data.results;
@@ -25,7 +25,7 @@ results.map((result) => {
     const imageWrapper = document.createElement("div");
     imageWrapper.classList.add("search-result");
     const image = document.createElement("img");
-    image.src = result.urls.small;
+    image.src = result.ur1s.small;
     image.alt = result.alt_description;
     const imageLink = document.createElement("a");
     imageLink.href = result.links.html;
@@ -34,7 +34,7 @@ results.map((result) => {
 
     imageWrapper.appendChild(image);
     imageWrapper.appendChild(imageLink);
-    imageWrapper.appendChild(imageWrapper);
+    searchResults.appendChild(imageWrapper);
 });
 
 page++
@@ -48,6 +48,6 @@ formE1.addEventListener("submit", (event) => {
     page = 1;
     searchImages();
 });
-showMore.addEventListener("click", () => {
+showMore.addEventListener("click",() => {
     searchImages();
 });
